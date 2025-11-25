@@ -1,20 +1,65 @@
-import { useState } from 'react'
-import './App.css'
-import Logo from './components/Logo'
-import Form from './components/Form'
-import PackingList from './components/PackingList'
-import Stats from './components/Stats'
+import { useState } from "react";
+import "./App.css";
+import Logo from "./components/Logo";
+import Form from "./components/Form";
+import PackingList from "./components/PackingList";
+import Stats from "./components/Stats";
+
+const packItems = [
+  {
+    id: crypto.randomUUID(),
+    description: "Passports",
+    quantity: 2,
+    packed: false,
+  },
+  {
+    id: crypto.randomUUID(),
+    description: "Socks",
+    quantity: 12,
+    packed: false,
+  },
+  {
+    id: crypto.randomUUID(),
+    description: "Charger",
+    quantity: 1,
+    packed: true,
+  },
+];
 
 function App() {
+  const [items, setItems] = useState(packItems);
+
+  const handleAddItem = (quantity, description) => {
+    setItems((items) => [
+      ...items,
+      {
+        id: crypto.randomUUID(),
+        description,
+        quantity,
+        packed: false,
+      },
+    ]);
+  };
+
+  const handleToggle = (id) => {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  };
+
+  const countedItems = items.length;
+  const packedItems = items.filter((item) => item.packed).length;
 
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
-      <Stats />
+      <Form packItems={packItems} handleAddItem={handleAddItem} />
+      <PackingList packItems={packItems} handleToggle={handleToggle} />
+      <Stats countedItems={countedItems} packedItems={packedItems} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,7 +1,10 @@
-export default function Stats() {
+export default function Stats({countedItems, packedItems}) {
+  const percentage = !packedItems ? 0 : Math.round((packedItems / countedItems) * 100);
   return (
-    <div className="stats">
-      <h2>Stats</h2>
-    </div>
+    <footer className="stats">
+      <em>
+        📝 You have {countedItems} items on your list and you have packed {packedItems} ({percentage}%){" "}
+      </em>
+    </footer>
   );
 }

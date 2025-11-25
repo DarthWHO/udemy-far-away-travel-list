@@ -1,9 +1,9 @@
 import ListItem from "../ListItem";
 
-export default function PackingList({ packItems, handleToggle }) {
-  const listItems = packItems.map((item) => (
+export default function PackingList({ items, handleToggle }) {
+  const listItems = items.map((item) => (
     <ListItem
-      key={item.id}
+      id={item.id}
       quantity={item.quantity}
       item={item.description}
       packed={item.packed}

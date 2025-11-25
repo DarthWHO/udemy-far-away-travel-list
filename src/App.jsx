@@ -29,7 +29,8 @@ const packItems = [
 function App() {
   const [items, setItems] = useState(packItems);
 
-  const handleAddItem = (quantity, description) => {
+  const handleAddItem = (event, quantity, description) => {
+    event.preventDefault();
     setItems((items) => [
       ...items,
       {
@@ -55,8 +56,8 @@ function App() {
   return (
     <div className="app">
       <Logo />
-      <Form packItems={packItems} handleAddItem={handleAddItem} />
-      <PackingList packItems={packItems} handleToggle={handleToggle} />
+      <Form handleAddItem={handleAddItem} />
+      <PackingList items={items} handleToggle={handleToggle} />
       <Stats countedItems={countedItems} packedItems={packedItems} />
     </div>
   );

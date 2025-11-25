@@ -1,6 +1,6 @@
 import ListItem from "../ListItem";
 
-export default function PackingList({ items, handleToggle }) {
+export default function PackingList({ items, handleToggle, handleDelete }) {
   const listItems = items.map((item) => (
     <ListItem
       id={item.id}
@@ -8,6 +8,7 @@ export default function PackingList({ items, handleToggle }) {
       item={item.description}
       packed={item.packed}
       handleToggle={handleToggle}
+      handleDelete={handleDelete}
     />
   ));
 

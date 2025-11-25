@@ -1,4 +1,11 @@
-export default function ListItem({ id, quantity, item, packed, handleToggle }) {
+export default function ListItem({
+  id,
+  quantity,
+  item,
+  packed,
+  handleToggle,
+  handleDelete,
+}) {
   const handleChange = (e) => {
     console.log("Toggling item with id:", id);
     e.preventDefault();
@@ -17,7 +24,7 @@ export default function ListItem({ id, quantity, item, packed, handleToggle }) {
       >
         {quantity} {item}
       </span>
-      <button>❌</button>
+      <button onClick={() => handleDelete(id)}>❌</button>
     </li>
   );
 }

@@ -50,6 +50,10 @@ function App() {
     );
   };
 
+  const handleDelete = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
+
   const countedItems = items.length;
   const packedItems = items.filter((item) => item.packed).length;
 
@@ -57,7 +61,11 @@ function App() {
     <div className="app">
       <Logo />
       <Form handleAddItem={handleAddItem} />
-      <PackingList items={items} handleToggle={handleToggle} />
+      <PackingList
+        items={items}
+        handleToggle={handleToggle}
+        handleDelete={handleDelete}
+      />
       <Stats countedItems={countedItems} packedItems={packedItems} />
     </div>
   );

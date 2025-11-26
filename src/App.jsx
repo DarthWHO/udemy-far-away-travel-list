@@ -28,6 +28,7 @@ const packItems = [
 
 function App() {
   const [items, setItems] = useState(packItems);
+  console.log(items);
 
   const handleAddItem = (event, quantity, description) => {
     event.preventDefault();
@@ -60,11 +61,11 @@ function App() {
   return (
     <div className="app">
       <Logo />
-      <Form handleAddItem={handleAddItem} />
+      <Form onAddItem={handleAddItem} />
       <PackingList
         items={items}
-        handleToggle={handleToggle}
-        handleDelete={handleDelete}
+        onToggleCheck={handleToggle}
+        onDeleteItem={handleDelete}
       />
       <Stats countedItems={countedItems} packedItems={packedItems} />
     </div>

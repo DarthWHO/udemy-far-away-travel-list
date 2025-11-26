@@ -1,10 +1,24 @@
-export default function Stats({countedItems, packedItems}) {
-  const percentage = !packedItems ? 0 : Math.round((packedItems / countedItems) * 100);
+export default function Stats({ countedItems, packedItems }) {
+  if (countedItems === 0) {
+    return (
+      <footer className="stats">
+        <em>Start adding some items to your packing list 📝</em>
+      </footer>
+    );
+  }
+
+  const percentage = !packedItems
+    ? 0
+    : Math.round((packedItems / countedItems) * 100);
+
+  const message =
+    packedItems === countedItems && countedItems > 0
+      ? "You got everything! Ready to go ✈️"
+      : `📝 You have ${countedItems} items on your list and you have packed ${packedItems} (${percentage}%)`;
+
   return (
     <footer className="stats">
-      <em>
-        📝 You have {countedItems} items on your list and you have packed {packedItems} ({percentage}%){" "}
-      </em>
+      <em>{message}</em>
     </footer>
   );
 }

@@ -1,14 +1,15 @@
-import ListItem from "../ListItem";
+import ListItem from "./ListItem";
 
-export default function PackingList({ items, handleToggle, handleDelete }) {
+export default function PackingList({ items, onToggleCheck, onDeleteItem }) {
   const listItems = items.map((item) => (
     <ListItem
+      key={item.id}
       id={item.id}
       quantity={item.quantity}
       item={item.description}
       packed={item.packed}
-      handleToggle={handleToggle}
-      handleDelete={handleDelete}
+      onToggleCheck={onToggleCheck}
+      onDeleteItem={onDeleteItem}
     />
   ));
 

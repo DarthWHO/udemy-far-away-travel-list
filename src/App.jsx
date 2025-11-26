@@ -55,6 +55,10 @@ function App() {
     setItems(items.filter((item) => item.id !== id));
   };
 
+  const handleDeleteItems = () => {
+    setItems([]);
+  }
+
   const countedItems = items.length;
   const packedItems = items.filter((item) => item.packed).length;
 
@@ -66,6 +70,7 @@ function App() {
         items={items}
         onToggleCheck={handleToggle}
         onDeleteItem={handleDelete}
+        onDeleteItems={handleDeleteItems} 
       />
       <Stats countedItems={countedItems} packedItems={packedItems} />
     </div>

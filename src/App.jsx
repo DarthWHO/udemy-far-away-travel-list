@@ -56,8 +56,12 @@ function App() {
   };
 
   const handleDeleteItems = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items?"
+    );
+    if (!confirmed) return;
     setItems([]);
-  }
+  };
 
   const countedItems = items.length;
   const packedItems = items.filter((item) => item.packed).length;
@@ -70,7 +74,7 @@ function App() {
         items={items}
         onToggleCheck={handleToggle}
         onDeleteItem={handleDelete}
-        onDeleteItems={handleDeleteItems} 
+        onDeleteItems={handleDeleteItems}
       />
       <Stats countedItems={countedItems} packedItems={packedItems} />
     </div>
